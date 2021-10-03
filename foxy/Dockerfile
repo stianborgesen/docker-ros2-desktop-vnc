@@ -30,8 +30,8 @@ RUN set -eu
 # by Open Robotics, licensed under CC-BY-4.0
 # source: https://github.com/ros2/ros2_documentation
 
-RUN CHOOSE_ROS_DISTRO=foxy
-RUN INSTALL_PACKAGE=desktop
+ENV CHOOSE_ROS_DISTRO=foxy
+ENV INSTALL_PACKAGE=desktop
 
 RUN sudo apt-get update
 RUN sudo apt-get install -y curl gnupg2 lsb-release
