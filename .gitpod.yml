@@ -1,5 +1,5 @@
 image:
-  file: Dockerfile
+  file: ./foxy/Dockerfile
   context: ./foxy
 ports:
   - port: 80
