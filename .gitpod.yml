@@ -1,0 +1,4 @@
+image:tiryoh/ros2-desktop-vnc:foxy
+ports:
+  - port: 80
+  - onOpen: open-preview
