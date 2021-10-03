@@ -1,6 +1,7 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc:focal
 LABEL maintainer="Tiryoh<tiryoh@gmail.com>"
 
+ENV USELESS_ENV_TO_TRIGGER_FULL_REBUILD true
 ENV DEBIAN_FRONTEND noninteractive
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 RUN apt-get update -q && \
