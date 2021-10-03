@@ -18,7 +18,7 @@ RUN sudo rm -rf /var/lib/apt/lists/*
 #RUN sudo useradd --create-home --home-dir $GITPOD_HOME --shell /bin/bash --user-group --groups adm $GITPOD_USER && \
 #    sudo echo $GITPOD_USER:$GITPOD_USER | chpasswd && \
 #    sudo echo "$GITPOD_USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-COPY sudo ros-foxy-desktop.sh /ros-foxy-desktop.sh
+COPY ros-foxy-desktop.sh /ros-foxy-desktop.sh
 RUN sudo mkdir -p /tmp/ros_setup_scripts_ubuntu && sudo mv /ros-foxy-desktop.sh /tmp/ros_setup_scripts_ubuntu/ && \
     sudo gosu $GITPOD_USER /tmp/ros_setup_scripts_ubuntu/ros-foxy-desktop.sh && \
     sudo rm -rf /var/lib/apt/lists/*
