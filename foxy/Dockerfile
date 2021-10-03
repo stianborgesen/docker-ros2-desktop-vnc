@@ -7,13 +7,13 @@ FROM gitpod/workspace-full-vnc
 #LABEL maintainer="Tiryoh<tiryoh@gmail.com>"
 ENV GITPOD_HOME=/home/gitpod
 ENV GITPOD_USER=gitpod
-ENV USER=root
+ENV USER=gitpod
 
 ENV DEBIAN_FRONTEND noninteractive
 #RUN echo "Set disable_coredump false" >> /etc/sudo.conf
-RUN apt-get update -q
-RUN apt-get upgrade -yq 
-RUN apt-get install -yq wget curl git build-essential vim sudo lsb-release locales bash-completion tzdata gosu
+RUN sudo apt-get update -q
+RUN sudo apt-get upgrade -yq 
+RUN sudo apt-get install -yq wget curl git build-essential vim sudo lsb-release locales bash-completion tzdata gosu
 RUN rm -rf /var/lib/apt/lists/*
 RUN useradd --create-home --home-dir $GITPOD_HOME --shell /bin/bash --user-group --groups adm $GITPOD_USER && \
     echo $GITPOD_USER:$GITPOD_USER | chpasswd && \
