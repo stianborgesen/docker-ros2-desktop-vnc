@@ -7,9 +7,10 @@ FROM gitpod/workspace-full-vnc
 #LABEL maintainer="Tiryoh<tiryoh@gmail.com>"
 ENV GITPOD_HOME=/home/gitpod
 ENV GITPOD_USER=gitpod
+ENV USER=root
 
 ENV DEBIAN_FRONTEND noninteractive
-#RUN echo "Set disable_coredump false" >> /etc/sudo.conf
+RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 RUN apt-get update -q && \
     apt-get upgrade -yq && \
     apt-get install -yq wget curl git build-essential vim sudo lsb-release locales bash-completion tzdata gosu && \
