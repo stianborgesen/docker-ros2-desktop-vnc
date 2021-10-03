@@ -1,4 +1,5 @@
-image:tiryoh/ros2-desktop-vnc:foxy
+image:
+  - file: foxy/Dockerfile
 ports:
   - port: 80
   - onOpen: open-preview
