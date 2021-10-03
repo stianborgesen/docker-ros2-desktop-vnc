@@ -45,8 +45,7 @@ RUN sudo apt-get install -y --no-install-recommends python3-rosdep python3-vcsto
 RUN sudo rosdep init
 RUN rosdep update
 RUN sudo apt-get install -y --no-install-recommends ros-${CHOOSE_ROS_DISTRO}-gazebo-ros-pkgs
-RUN grep -F "source /opt/ros/${CHOOSE_ROS_DISTRO}/setup.bash" ~/.bashrc ||
-RUN echo "source /opt/ros/${CHOOSE_ROS_DISTRO}/setup.bash" >> ~/.bashrc
+RUN grep -F "source /opt/ros/${CHOOSE_ROS_DISTRO}/setup.bash" ~/.bashrc || echo "source /opt/ros/${CHOOSE_ROS_DISTRO}/setup.bash" >> ~/.bashrc
 
 RUN set +u
 
