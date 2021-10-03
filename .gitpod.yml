@@ -1,2 +1,5 @@
 image:
-  - file: foxy/Dockerfile
+  file: foxy/Dockerfile
+ports:
+  - port: 80
+  - onOpen: open-preview
