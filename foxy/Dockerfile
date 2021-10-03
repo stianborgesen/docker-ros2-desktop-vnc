@@ -1,18 +1,19 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc:focal
 LABEL maintainer="Tiryoh<tiryoh@gmail.com>"
+ENV HOME=/home/gitpod
+ENV USER=gitpod
 
-ENV USELESS_ENV_TO_TRIGGER_FULL_REBUILD true
 ENV DEBIAN_FRONTEND noninteractive
 RUN echo "Set disable_coredump false" >> /etc/sudo.conf
 RUN apt-get update -q && \
     apt-get upgrade -yq && \
     apt-get install -yq wget curl git build-essential vim sudo lsb-release locales bash-completion tzdata gosu && \
     rm -rf /var/lib/apt/lists/*
-RUN useradd --create-home --home-dir /home/gitpod --shell /bin/bash --user-group --groups adm gitpod && \
-    echo gitpod:gitpod | chpasswd && \
-    echo "gitpod ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+RUN useradd --create-home --home-dir $HOME --shell /bin/bash --user-group --groups adm $USER && \
+    echo $USER:$USER | chpasswd && \
+    echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 COPY ros-foxy-desktop.sh /ros-foxy-desktop.sh
 RUN mkdir -p /tmp/ros_setup_scripts_ubuntu && mv /ros-foxy-desktop.sh /tmp/ros_setup_scripts_ubuntu/ && \
-    gosu gitpod /tmp/ros_setup_scripts_ubuntu/ros-foxy-desktop.sh && \
+    gosu $USER /tmp/ros_setup_scripts_ubuntu/ros-foxy-desktop.sh && \
     rm -rf /var/lib/apt/lists/*
-ENV USER gitpod
+ENV USER $USER
