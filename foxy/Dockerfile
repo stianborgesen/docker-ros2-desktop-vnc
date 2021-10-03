@@ -14,13 +14,13 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN sudo apt-get update -q
 RUN sudo apt-get upgrade -yq 
 RUN sudo apt-get install -yq wget curl git build-essential vim sudo lsb-release locales bash-completion tzdata gosu
-RUN rm -rf /var/lib/apt/lists/*
-RUN useradd --create-home --home-dir $GITPOD_HOME --shell /bin/bash --user-group --groups adm $GITPOD_USER && \
-    echo $GITPOD_USER:$GITPOD_USER | chpasswd && \
-    echo "$GITPOD_USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-COPY ros-foxy-desktop.sh /ros-foxy-desktop.sh
-RUN mkdir -p /tmp/ros_setup_scripts_ubuntu && mv /ros-foxy-desktop.sh /tmp/ros_setup_scripts_ubuntu/ && \
-    gosu $GITPOD_USER /tmp/ros_setup_scripts_ubuntu/ros-foxy-desktop.sh && \
-    rm -rf /var/lib/apt/lists/*
+RUN sudo rm -rf /var/lib/apt/lists/*
+RUN sudo useradd --create-home --home-dir $GITPOD_HOME --shell /bin/bash --user-group --groups adm $GITPOD_USER && \
+    sudo echo $GITPOD_USER:$GITPOD_USER | chpasswd && \
+    sudo echo "$GITPOD_USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+COPY sudo ros-foxy-desktop.sh /ros-foxy-desktop.sh
+RUN sudo mkdir -p /tmp/ros_setup_scripts_ubuntu && sudo mv /ros-foxy-desktop.sh sudo /tmp/ros_setup_scripts_ubuntu/ && \
+    sudo gosu $GITPOD_USER /tmp/ros_setup_scripts_ubuntu/ros-foxy-desktop.sh && \
+    sudo rm -rf /var/lib/apt/lists/*
 #RUN mv $GITPOD_HOME /home/gitpod_moved
 ENV USER $GITPOD_USER
