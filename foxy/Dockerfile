@@ -32,7 +32,7 @@ RUN set -eu
 
 ENV CHOOSE_ROS_DISTRO=foxy
 ENV INSTALL_PACKAGE=desktop
-
+ENV DEBIAN_FRONTEND noninteractive
 RUN sudo apt-get update
 RUN sudo apt-get install -y curl gnupg2 lsb-release
 RUN sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
