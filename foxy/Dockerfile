@@ -11,7 +11,7 @@ RUN apt-get update -q && \
 #RUN useradd --create-home --home-dir /home/gitpod --shell /bin/bash --user-group --groups adm,sudo ubuntu && \
 #    echo gitpod:gitpod | chpasswd && \
 #    echo "gitpod ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-COPY foxy/ros-foxy-desktop.sh /ros-foxy-desktop.sh
+COPY ros-foxy-desktop.sh /ros-foxy-desktop.sh
 RUN mkdir -p /tmp/ros_setup_scripts_ubuntu && mv /ros-foxy-desktop.sh /tmp/ros_setup_scripts_ubuntu/ && \
     gosu ubuntu /tmp/ros_setup_scripts_ubuntu/ros-foxy-desktop.sh && \
     rm -rf /var/lib/apt/lists/*
