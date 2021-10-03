@@ -11,10 +11,10 @@ ENV USER=root
 
 ENV DEBIAN_FRONTEND noninteractive
 #RUN echo "Set disable_coredump false" >> /etc/sudo.conf
-RUN apt-get update -q && \
-    apt-get upgrade -yq && \
-    apt-get install -yq wget curl git build-essential vim sudo lsb-release locales bash-completion tzdata gosu && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update -q
+RUN apt-get upgrade -yq 
+RUN apt-get install -yq wget curl git build-essential vim sudo lsb-release locales bash-completion tzdata gosu
+RUN rm -rf /var/lib/apt/lists/*
 RUN useradd --create-home --home-dir $GITPOD_HOME --shell /bin/bash --user-group --groups adm $GITPOD_USER && \
     echo $GITPOD_USER:$GITPOD_USER | chpasswd && \
     echo "$GITPOD_USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
