@@ -49,7 +49,7 @@ RUN grep -F "source /opt/ros/${CHOOSE_ROS_DISTRO}/setup.bash" ~/.bashrc || echo 
 
 RUN set +u
 
-RUN source /opt/ros/${CHOOSE_ROS_DISTRO}/setup.bash
+#RUN source /opt/ros/${CHOOSE_ROS_DISTRO}/setup.bash
 
 RUN echo "success installing ROS2 ${CHOOSE_ROS_DISTRO}"
 RUN echo "Run 'source /opt/ros/${CHOOSE_ROS_DISTRO}/setup.bash'"
