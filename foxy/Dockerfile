@@ -16,5 +16,5 @@ COPY ros-foxy-desktop.sh /ros-foxy-desktop.sh
 RUN mkdir -p /tmp/ros_setup_scripts_ubuntu && mv /ros-foxy-desktop.sh /tmp/ros_setup_scripts_ubuntu/ && \
     gosu $USER /tmp/ros_setup_scripts_ubuntu/ros-foxy-desktop.sh && \
     rm -rf /var/lib/apt/lists/*
-RUN mv $HOME /home/$USER_MOVED
+RUN mv $HOME /home/gitpod_moved
 ENV USER $USER
